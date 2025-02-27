@@ -25,5 +25,16 @@ Also updates the collation for individual text/string columns (VARCHAR, TEXT, et
 
 ### Restore Foreign Keys:
 
-Recreates all the foreign key constraints using the definitions stored in step 1
+Recreates all the foreign key constraints using the definitions stored in step 1 
 For composite keys, it correctly includes all columns in the constraint
+
+## installation
+This approach ensures that changing the collation of your database won't cause problems with foreign key constraints, especially when dealing with composite keys (foreign keys that involve multiple columns).
+To use this script, you'll need to:
+
+- Install the mysql-connector-python package (pip install mysql-connector-python SQLAlchemy)
+- Update the database connection parameters in engine = create_engine('mysql+pymysql://....
+- Optionally modify the collation :
+  - new_collation="utf8mb4_unicode_ci"
+  - new_charset="utf8mb4"   
+
